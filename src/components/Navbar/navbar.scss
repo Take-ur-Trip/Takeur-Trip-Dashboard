@@ -1,0 +1,33 @@
+.navbar {
+    height: 50px+2px;
+    // background-color: aqua;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom: solid 2px lightgray;
+
+    .rightSide {
+        width: 10%;
+    }
+
+    .nav-items {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .icon {
+        height: 100%;
+        width: 60%;
+        transition: all 0.2s linear;
+
+        &:hover {
+            color: #6439ff;
+            cursor: pointer;
+            transform: scale(1.2,1.2);
+        }
+    }
+}
