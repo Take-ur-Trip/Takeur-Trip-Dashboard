@@ -1,0 +1,56 @@
+.sidebar {
+    flex: 1;
+    min-height: 100vh;
+    border-right: solid 2px lightgray;
+    
+    .top {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6439ff;
+        }
+    }
+
+    .center {
+        .ul {
+            list-style: circle;
+        }
+
+        .items-container {
+            margin: 15px 5px;
+        }
+
+        .items-group {
+            font-size: 1em;
+            color: gray;
+            font-weight: 200;
+        }
+
+        .list-item {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            margin: 5px 0 0 10px;
+
+            &:hover {
+                color:#6439ff;
+                cursor: pointer;
+            }
+        }
+
+        .icon {
+            margin-right: 5px;
+            color: #6439ff;
+        }
+    }
+
+    hr {
+        height: 0;
+        border: solid 0.5px lightgray;
+    }
+}
