@@ -1,0 +1,12 @@
+{
+    "locales" : {
+        "authError" : {
+            "msg" : "Authenticating error.",
+            "code" : 403
+        },
+        "authSuccessful" : {
+            "msg" : "Authenticating successful.",
+            "code" : 200
+        }
+    }
+}

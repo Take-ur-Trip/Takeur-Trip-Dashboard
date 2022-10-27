@@ -41,6 +41,15 @@
                 color:#6439ff;
                 cursor: pointer;
             }
+
+            .sidebar-link {
+                text-decoration: none;
+                color: black;
+
+                &:hover {
+                    color: #6439ff;
+                }
+            }
         }
 
         .icon {

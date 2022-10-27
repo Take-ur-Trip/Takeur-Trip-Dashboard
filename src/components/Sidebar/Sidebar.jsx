@@ -6,8 +6,17 @@ import GradeIcon from '@mui/icons-material/Grade';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import { Link } from "@mui/material";
 
 export const Sidebar = () => {
+    const { logOut } = useAuth();
+
+  const handleLogout = () => {
+    logOut();
+  }
+
   return (
     <div className="sidebar">
         <div className="top">
@@ -20,14 +29,18 @@ export const Sidebar = () => {
                     <span className="items-group">MAIN</span>
                     <li className="list-item">
                         <DashboardIcon className="icon"/>
-                        <span className="list-text">Dashboard</span>
+                        <span className="list-text">
+                            <Link href="/" className="sidebar-link">Dashboard</Link>
+                        </span>
                     </li>
                 </div>
                 <div className="items-container">
                     <span className="items-group">LISTS</span>
                     <li className="list-item">
                         <PersonIcon className="icon"/>
-                        <span className="list-text">Users</span>
+                        <span className="list-text">
+                            <Link href="/users" className="sidebar-link">Users</Link>
+                        </span>
                     </li>
                     <li className="list-item">
                         <DriveEtaIcon className="icon"/>
@@ -53,7 +66,7 @@ export const Sidebar = () => {
                     <span className="items-group">USER</span>
                     <li className="list-item">
                         <LogoutIcon className="icon"/>
-                        <span className="list-text">Logout</span>
+                        <span className="list-text" onClick={handleLogout}>Logout</span>
                     </li>
                 </div>
             </ul>
