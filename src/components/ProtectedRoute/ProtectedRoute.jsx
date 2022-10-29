@@ -1,19 +1,19 @@
-import { useContext } from "react";
-import { Navigate } from "react-router-dom"
-import { UserContext } from "../../context/UserContext";
+import { connect } from "react-redux";
+import { Navigate, Route, } from "react-router-dom";
 
-export const ProtectedRoute = ({ children }) => {
-    const { user, isLoading } = useContext(UserContext);
-    console.log(user)
-
-    if(isLoading) {
-        return "Loading..."
-    }
-
-    if(user) {
+const ProtectedRoute = ({children, currentUser}) => {
+    if(currentUser) {
         return children;
     } else {
         return <Navigate to="/login" replace/>
     }
 
 }
+
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.auth.user || state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(ProtectedRoute);

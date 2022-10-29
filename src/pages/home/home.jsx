@@ -1,22 +1,13 @@
-import React, { useEffect } from 'react'
 import "./home.scss";
-import { Navbar } from '../../components/Navbar/Navbar';
-import { Sidebar } from '../../components/Sidebar/Sidebar'
-import { Card } from '../../components/Card/Card';
+import React, { useEffect } from 'react'
 import axios from 'axios';
-import { GlobalWrapper } from '../../components/GlobalWrapper/GlobalWrapper';
-
+import { Card } from '../../components/Card/Card';
+import GlobalWrapper from '../../components/GlobalWrapper/GlobalWrapper';
 // dev purposes
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 
 
 export const Home = () => {
-
-  useEffect(() => {
-    axios.get('http://localhost:8080/test/').then((res, rej) => {
-      console.log(res);
-    })
-  }, [])
 
   return (
     <GlobalWrapper>

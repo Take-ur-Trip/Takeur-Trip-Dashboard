@@ -7,6 +7,10 @@
         "authSuccessful" : {
             "msg" : "Authenticating successful.",
             "code" : 200
+        },
+        "fetchUsersSuccessful" : {
+            "msg" : "Fetching users successful.",
+            "code" : 200
         }
     }
 }

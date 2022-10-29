@@ -1,41 +1,29 @@
-import { React, useState, Fragment } from 'react';
+import { React, useEffect, useState } from 'react';
 import { CssVarsProvider, useColorScheme } from '@mui/joy/styles';
 import Sheet from '@mui/joy/Sheet';
 import Typography from '@mui/joy/Typography';
 import TextField from '@mui/joy/TextField';
 import Button from '@mui/joy/Button';
 import "./login.scss";
-import useAuth from '../../hooks/useAuth';
-import { useContext, useEffect } from 'react';
-import { UserContext } from '../../context/UserContext';
-import { useNavigate } from "react-router-dom";
 
-const ModeToggle = () => {
-  const { mode, setMode } = useColorScheme();
+import { connect } from "react-redux";
+import { login } from "../../actions/auth";
+import { useDispatch } from 'react-redux';
+import { useNavigate} from "react-router-dom";
 
-  return (
-    <Button
-      variant="outlined"
-      onClick={() => {
-        setMode(mode === 'light' ? 'dark' : 'light');
-      }}
-    >
-      {mode === 'light' ? 'Turn dark' : 'Turn light'}
-    </Button>
-  );
-}
-
-export const Login = (props) => {
-    const { user, isLoading } = useContext(UserContext);
+const Login = ({isLoggedIn}) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    if(user && !isLoading) {
-      navigate('/');
-    }
-    const { logIn } = useAuth();
+    useEffect(() => {
+      if(isLoggedIn) {
+        navigate('/dashboard');
+      }
+    })
     const [error, setError] = useState(false);
     const [loginForm, setLoginForm] = useState({
         email: "",
-        password: ""
+        password: "",
+        loading: false
     })
 
     const handleChange = event => {
@@ -49,10 +37,24 @@ export const Login = (props) => {
     }
 
     const handleLogin = async () => {
-      const loginAttempt = await logIn(loginForm);
-      if(loginAttempt.code == 403) {
+      setLoginForm((prevState) => {
+        return {
+          ...prevState,
+          loading: true
+        }
+      })
+
+      dispatch(login({email: loginForm.email, password: loginForm.password})).then(() => {
+        navigate('/dashboard')
+      }).catch(() => {
+        setLoginForm((prevState) => {
+          return {
+            ...prevState,
+            loading: true
+          }
+        })
         setError(true);
-      }
+      })
     }
 
   return (
@@ -97,16 +99,19 @@ export const Login = (props) => {
             label="Password"
           />
           <Button sx={{ mt: 1 /* margin top */ }} onClick={handleLogin}>Log in</Button>
-          {/* <Typography
-            endDecorator={<Link href="/sign-up">Sign up</Link>}
-            fontSize="sm"
-            sx={{ alignSelf: 'center' }}
-          >
-            Don&apos;t have an account?
-          </Typography> */}
-        <ModeToggle/>
         </Sheet>
       </main>
     </CssVarsProvider>
   );
 }
+
+
+const mapStateToProps = state => {
+  const { isLoggedIn } = state.auth;
+  const { message } = state.message;
+  return {
+    isLoggedIn, message
+  }
+}
+
+export default connect(mapStateToProps)(Login);

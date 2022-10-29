@@ -6,15 +6,18 @@ import GradeIcon from '@mui/icons-material/Grade';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-import useAuth from "../../hooks/useAuth";
-import { useState } from "react";
 import { Link } from "@mui/material";
+import { logout } from "../../actions/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 export const Sidebar = () => {
-    const { logOut } = useAuth();
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    
   const handleLogout = () => {
-    logOut();
+    dispatch(logout());
+    navigate('/login');
   }
 
   return (
@@ -30,7 +33,7 @@ export const Sidebar = () => {
                     <li className="list-item">
                         <DashboardIcon className="icon"/>
                         <span className="list-text">
-                            <Link href="/" className="sidebar-link">Dashboard</Link>
+                            <Link href="/dashboard" className="sidebar-link">Dashboard</Link>
                         </span>
                     </li>
                 </div>

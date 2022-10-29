@@ -2,11 +2,8 @@ import "./navbar.scss";
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
 
-export const Navbar = () => {
-    const { user } = useContext(UserContext);
+export const Navbar = ({user}) => {
 
   return (
     <nav className="navbar">
@@ -23,6 +20,7 @@ export const Navbar = () => {
                     </li>
                     <li className="nav-item">
                         <span className="welcomeText">Logged in as <b>{user}</b></span>
+                        {/* <span className="welcomeText">Logged in as <b>tmp</b></span> */}
                     </li>
                 </ul>
         </div>

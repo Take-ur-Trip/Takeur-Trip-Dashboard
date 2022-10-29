@@ -1,18 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Provider } from 'react-redux';
 import { BrowserRouter as Router,Navigate,Route,Routes } from "react-router-dom";
-import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
-import { Home } from './pages/home/home';
-import { Login } from './pages/login/login';
-import useFindUser from './hooks/useFindUser';
-import { UserContext } from './context/UserContext';
-import { Users } from './pages/users/users';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import {Home} from './pages/home/home';
+import Login from './pages/login/login';
+import Users from './pages/users/users';
+import store from "./store";
 
 const App = () => {
-  const { user, setUser, isLoading } = useFindUser();
-  
   return (
     <Router>
-      <UserContext.Provider value={{ user, setUser, isLoading }}>
+      <Provider store={store}>
         <Routes>
           {/* Public Routes */}
           <Route path="/login" element={ <Login/> }>
@@ -20,12 +18,13 @@ const App = () => {
 
 
             {/* Private Routes */}
-            <Route path="/" element={
+            <Route path="/dashboard" element={
               <ProtectedRoute>
                 <Home/>
               </ProtectedRoute>
             }>
             </Route>
+
             <Route path="/users" element={
               <ProtectedRoute>
                 <Users/>
@@ -33,7 +32,7 @@ const App = () => {
             }>
             </Route>
         </Routes>
-      </UserContext.Provider>
+      </Provider>
     </Router>
   )
 };
