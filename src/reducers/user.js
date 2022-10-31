@@ -1,4 +1,4 @@
-import { FETCH_USERS } from "../actions/types";
+import { BAN_USER, FETCH_USERS, UNBAN_USER } from "../actions/types";
 
 const initialState = {
     isLoading: true,
@@ -10,6 +10,18 @@ export default (state = initialState, action) => {
 
     switch(type) {
         case FETCH_USERS:
+            return {
+                ...state,
+                isLoading: false,
+                fetchedUsers: payload
+            }
+        case BAN_USER:
+            return {
+                ...state,
+                isLoading: false,
+                fetchedUsers: payload
+            }
+        case UNBAN_USER:
             return {
                 ...state,
                 isLoading: false,

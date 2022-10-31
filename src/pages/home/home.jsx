@@ -3,11 +3,11 @@ import React, { useEffect } from 'react'
 import axios from 'axios';
 import { Card } from '../../components/Card/Card';
 import GlobalWrapper from '../../components/GlobalWrapper/GlobalWrapper';
-// dev purposes
+import { connect } from "react-redux";
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 
 
-export const Home = () => {
+const Home = () => {
 
   return (
     <GlobalWrapper>
@@ -20,3 +20,5 @@ export const Home = () => {
     </GlobalWrapper>
   )
 }
+
+export default Home;

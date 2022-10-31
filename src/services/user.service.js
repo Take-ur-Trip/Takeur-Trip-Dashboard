@@ -11,6 +11,22 @@ class UserService {
 
         return {users: response.data};
     }
+
+    async banUser(id, masterPassword) {
+        const response = await axios.post(`${API_URL}/ban/${id}`, {masterPassword}, {
+            headers: authHeader()
+        })
+
+        return response.data;
+    }
+
+    async unbanUser(id, masterPassword) {
+        const response = await axios.post(`${API_URL}/unban/${id}`, {masterPassword}, {
+            headers: authHeader()
+        })
+
+        return response.data;
+    }
 }
 
 export default new UserService();
