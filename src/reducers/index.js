@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
 import auth from "./auth";
 import message from "./message";
+import trip from "./trip";
 import user from "./user";
+import rating from "./rating";
+import darkMode from "./darkMode";
 
 export default combineReducers({
-    auth, message, user
+    auth, message, darkMode, user, trip, rating
 });

@@ -47,11 +47,11 @@ export const Sidebar = () => {
                     </li>
                     <li className="list-item">
                         <DriveEtaIcon className="icon"/>
-                        <span className="list-text">Trips</span>
+                        <Link href="/trips" className="sidebar-link">Trips</Link>
                     </li>
                     <li className="list-item">
                         <GradeIcon className="icon"/>
-                        <span className="list-text">Ratings</span>
+                        <Link href="/ratings" className="sidebar-link">Ratings</Link>
                     </li>
                 </div>
                 <div className="items-container">

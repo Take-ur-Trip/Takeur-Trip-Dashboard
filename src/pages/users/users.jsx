@@ -4,7 +4,7 @@ import GlobalWrapper from '../../components/GlobalWrapper/GlobalWrapper';
 import { connect, useDispatch } from 'react-redux';
 import { banUser, fetchUsers, unbanUser } from '../../actions/user';
 import { useState } from 'react';
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import { Button, CircularProgress } from '@mui/material';
 import BlockIcon from '@mui/icons-material/Block';
 
@@ -20,6 +20,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import SwitchAccessShortcutIcon from '@mui/icons-material/SwitchAccessShortcut';
 import Tooltip from '@mui/material/Tooltip';
+import moment from 'moment/moment';
 
 
 const Users = ({isLoading, fetchedUsers}) => {
@@ -69,7 +70,6 @@ const Users = ({isLoading, fetchedUsers}) => {
       setBanSnackbar(true)
     })
   }
-  //NJ6deIdje69r4qaW5F9HpwNKjP5e11YQ
 
   const handleUnban = () => {
     setIsUnbanned(false);
@@ -90,7 +90,9 @@ const Users = ({isLoading, fetchedUsers}) => {
     { field: 'email', headerName: 'Email', width: 100},
     { field: 'password', headerName: 'Password', width: 100},
     { field: 'verification', type: 'boolean', headerName: 'Verification', width: 100},
-    { field: 'accountCreated', type: 'dateTime', headerName: 'Creation date', width: 115},
+    { field: 'accountCreated', type: 'dateTime', headerName: 'Creation date', width: 200, valueFormatter: params => {
+      return params.value ? moment(params.value).format('YYYY/MM/DD HH:mm:ss') : "Not accepted yet.";
+    }},
     { field: 'bio', headerName: 'Bio', width: 100},
     { field: 'isBanned', type: 'boolean', headerName: 'Banned', width: 100},
     { field: 'isDriver', type: 'boolean', headerName: 'Driver', width: 100},
@@ -129,7 +131,7 @@ const Users = ({isLoading, fetchedUsers}) => {
           rows={fetchedUsers}
           columns={userColumns}
           pageSize={20}
-          checkboxSelection
+          // getRowHeight={() => '100px'}
           getRowId={(row) => row.userId}
         />
               <Dialog
