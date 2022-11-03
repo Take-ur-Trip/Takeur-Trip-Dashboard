@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Navigate,Route,Routes } from "react-router-dom"
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Home from './pages/home/home';
 import Login from './pages/login/login';
+import Logs from './pages/logs/logs';
 import Rating from './pages/rating/rating';
 import Trips from './pages/trips/trips';
 import Users from './pages/users/users';
@@ -44,6 +45,13 @@ const App = () => {
             <Route path="/ratings" element={
               <ProtectedRoute>
                 <Rating/>
+              </ProtectedRoute>
+            }>
+            </Route>
+
+            <Route path="/logs" element={
+              <ProtectedRoute>
+                <Logs/>
               </ProtectedRoute>
             }>
             </Route>

@@ -58,7 +58,7 @@ export const Sidebar = () => {
                     <span className="items-group">SERVICE</span>
                     <li className="list-item">
                         <LogoDevIcon className="icon"/>
-                        <span className="list-text">Logs</span>
+                        <Link href="/logs" className="sidebar-link">Logs</Link>
                     </li>
                     <li className="list-item">
                         <SettingsIcon className="icon"/>

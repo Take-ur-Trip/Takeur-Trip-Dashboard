@@ -17,3 +17,6 @@ export const FETCH_TRIPS = "FETCH_TRIPS";
 
 // Rating types
 export const FETCH_RATING = "FETCH_RATING";
+
+// Logger types
+export const FETCH_LOGS = "FETCH_LOGS";
