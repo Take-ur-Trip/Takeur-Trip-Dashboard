@@ -53,7 +53,6 @@ const Users = ({isLoading, fetchedUsers}) => {
   const handleChange = event => {
     const { name, value } = event.target;
     setMasterPassword(value)
-    console.log(masterPassword)
 }
 
   const handleBan = () => {

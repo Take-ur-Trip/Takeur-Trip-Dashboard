@@ -1,11 +1,12 @@
 import axios from "axios";
 import {authHeader} from "./auth-header";
 
-const API_URL = "http://localhost:8080/users";
+// const API_URL = "http://localhost:8080/users";
+const API_URL = config.apiUrl;
 
 class UserService {
     async fetchUser(id) {
-        const response = await axios.get(`${API_URL}/fetch${id ? `/${id}` : ""}`, {
+        const response = await axios.get(`${API_URL}users/fetch${id ? `/${id}` : ""}`, {
             headers: authHeader()
         })
 
@@ -13,7 +14,7 @@ class UserService {
     }
 
     async banUser(id, masterPassword) {
-        const response = await axios.post(`${API_URL}/ban/${id}`, {masterPassword}, {
+        const response = await axios.post(`${API_URL}users/ban/${id}`, {masterPassword}, {
             headers: authHeader()
         })
 
@@ -21,7 +22,7 @@ class UserService {
     }
 
     async unbanUser(id, masterPassword) {
-        const response = await axios.post(`${API_URL}/unban/${id}`, {masterPassword}, {
+        const response = await axios.post(`${API_URL}users/unban/${id}`, {masterPassword}, {
             headers: authHeader()
         })
 
