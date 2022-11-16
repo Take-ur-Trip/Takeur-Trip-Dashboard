@@ -34,9 +34,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-app-rewired --max_old_space_size=2560 start",
-    "build": "react-app-rewired --max_old_space_size=2560 build",
-    "test": "react-app-rewired --max_old_space_size=2560 test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
