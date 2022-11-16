@@ -1,5 +1,6 @@
 import axios from "axios";
 import {authHeader} from "./auth-header";
+import config from "../config/config.json";
 
 // const API_URL = "http://localhost:8080/users";
 const API_URL = config.apiUrl;
